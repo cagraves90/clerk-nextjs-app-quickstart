@@ -61,28 +61,14 @@ To run the example locally, you need to:
 
 5. `npm run dev` to launch the development server.
 
-## Learn more
+6. Once the (http://localhost:3000/) is running, a very basic page should pop up, with a sign in button at the top, then with the custom flow Sign Up form below. The Home page will be displayed beneath that, in the body.
 
-To learn more about Clerk and Next.js, check out the following resources:
+7. The code for the custom sign Up flow is in sign-up\[[...sign-up]]\page.tsx.
 
-- [Quickstart: Get started with Next.js and Clerk](https://clerk.com/docs/quickstarts/nextjs?utm_source=DevRel&utm_medium=docs&utm_campaign=templates&utm_content=10-24-2023&utm_term=clerk-nextjs-app-quickstart)
+8. The code for the custom oauth flow is in oauth\oauthSignIn folder.
 
-- [Clerk Documentation](https://clerk.com/docs?utm_source=DevRel&utm_medium=docs&utm_campaign=templates&utm_content=10-24-2023&utm_term=clerk-nextjs-app-quickstart)
-- [Next.js Documentation](https://nextjs.org/docs)
+9. If you sign up an account with the custom flow form, it will go smoothly, send a code to your email, and complete sign up. A user will then be created in the dashboard. If there is a user in the Clerk dashboard, the signIn.authenticateWithRedirect goes smoothly, and it will connect the social connection to the user and sign the user in.
 
-## Found an issue?
+10. If you click on the Google, Facebook, or Apple ID icons to sign up, it will either immediately go to "404 not found" due to the authenticateWithRedirect, or redirect to the external oauth, then when you give permission, it will redirect to "404 not found" after this, and no user is created in the Clerk Dashboard. However, I find that there is a connection created with the oauth provider.
 
-If you have found an issue with the quickstart, please create an [issue](https://github.com/clerkinc/clerk-nextjs-app-quickstart/issues).
-
-If it's a quick fix, such as a misspelled word or a broken link, feel free to skip creating an issue.  
-Go ahead and create a [pull request](https://github.com/clerkinc/clerk-nextjs-app-quickstart/pulls) with the solution. :rocket:
-
-## Want to leave feedback?
-
-Feel free to create an [issue](https://github.com/clerkinc/clerk-nextjs-app-quickstart/issues) with the **feedback** label. Our team will take a look at it and get back to you as soon as we can!
-
-## Connect with us
-
-You can discuss ideas, ask questions, and meet others from the community in our [Discord](https://discord.com/invite/b5rXHjAg7A).
-
-If you prefer, you can also find support through our [Twitter](https://twitter.com/ClerkDev), or you can [email](mailto:support@clerk.dev) us!
+11. If you switch the signUp.authenticateWithRedirect to signIn.authenticateWithRedirect, it should sign in no problems, if there is a user already created with that email.
